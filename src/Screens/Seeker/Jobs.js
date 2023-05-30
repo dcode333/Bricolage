@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, StyleSheet, FlatList, Text, ScrollView } from 'react-native';
-import { Button } from 'react-native-paper';
+import { View, StyleSheet, FlatList, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Button, Menu, PaperProvider } from 'react-native-paper';
 import { MyContext } from '../../Store/Global'
 import JobCard from './Components/JobCard';
 import { useRoute } from '@react-navigation/native';
@@ -11,6 +11,8 @@ const JobList = () => {
     const { lang, baseurl } = useContext(MyContext);
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [visible, setVisible] = useState(false);
+
     const route = useRoute();
     const { profession } = route.params || {};
 
@@ -43,18 +45,30 @@ const JobList = () => {
     );
 
     return (
-        <View style={styles.container}>
-            <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.containerScroller}
-            >
-                {cities.map((city, index) => (
-                    <Button key={index} mode="outlined" style={styles.button} onPress={() => filterByCities(city)}>
-                        <Text style={{ fontFamily: 'Poppins-Medium', color: 'white' }}>{city}</Text>
-                    </Button>
-                ))}
-            </ScrollView>
+        <PaperProvider style={styles.container}>
+            <View contentContainerStyle={styles.containerScroller} >
+                <View >
+                    <Menu
+                        style={styles.menuStyles}
+                        visible={visible}
+                        onDismiss={() => setVisible(false)}
+                        anchor={<Button mode="outlined" style={styles.button} onPress={() => { setVisible(true) }}>
+                            <Text style={{ fontFamily: 'Poppins-Medium', color: 'white' }}>{lang["posterJobs"]["filtercity"]}</Text>
+                        </Button>}
+                    >
+                        <ScrollView >
+                            {cities.map((option, index) => (
+                                <Menu.Item
+                                    style={styles.buttonText}
+                                    key={index}
+                                    title={option}
+                                    onPress={() => { setVisible(false); filterByCities(option); }}
+                                />
+                            ))}
+                        </ScrollView>
+                    </Menu>
+                </View>
+            </View>
             {filteredData.length === 0 ? <View style={styles.container}>
                 <Text style={styles.title}>{lang["posterJobs"]["noJobs"]}</Text>
             </View> : <FlatList
@@ -62,7 +76,7 @@ const JobList = () => {
                 renderItem={renderItem}
                 keyExtractor={item => item._id}
             />}
-        </View>
+        </PaperProvider>
     );
 };
 
@@ -83,7 +97,16 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     button: {
-        marginRight: 5,
+        margin: 10,
         backgroundColor: '#1DBF73',
+        borderRadius: 10,
+
+    },
+    menuStyles: {
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, height: 500
+    }, buttonText: {
+        color: '#1DBF73',
+        fontSize: 12,
+        fontFamily: 'Poppins-Medium',
     },
 });

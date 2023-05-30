@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
@@ -61,6 +61,7 @@ const SignIn = () => {
 
     return (
         <View style={styles.container}>
+            <Image source={require('../../assets/adaptive-icon.png')} style={{ width: 250, height: 180,marginTop:-50}} />
             <Text style={styles.title}>{lang["SignIn"]["login"]}</Text>
             <View style={styles.inputContainer}>
                 <TextInput
@@ -130,9 +131,9 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 32,
-        fontFamily: 'Poppins-Bold', 
+        fontFamily: 'Poppins-Bold',
         color: '#FFFFFF',
-        marginBottom: 32,
+        marginBottom: 20,
     },
     inputContainer: {
         marginBottom: 32,
@@ -181,8 +182,8 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#FFFFFF',
-        paddingHorizontal: 32,
-        paddingVertical: 16,
+        paddingHorizontal: 45,
+        paddingVertical: 10,
         borderRadius: 10,
     },
     buttonText: {

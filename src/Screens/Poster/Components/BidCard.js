@@ -45,7 +45,7 @@ const UserCard = ({ bids = {} }) => {
             </Card.Content>
             <Modal visible={visible} animationType='slide'>
                 <TouchableOpacity style={styles.closeButton} onPress={() => setVisible(false)}>
-                    <Text style={styles.closeButtonText}>Close</Text>
+                    <Text style={styles.closeButtonText}>{lang["Bids"]["close"]}</Text>
                 </TouchableOpacity>
                 <ScrollView style={styles.modalContainer}>
                     <View style={styles.imageContainer}>

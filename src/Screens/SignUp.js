@@ -286,7 +286,7 @@ const RegisterScreen = () => {
               />
             </View>
           )}
-          <Text style={styles.radioLabel}>{lang["SignIn"]["Dont have an account"]} ? <Text onPress={() => navigation.navigate("SignIn")} style={{ color: '#003912' }}>{lang["SignUp"]["SignIn"]}</Text></Text>
+          <Text style={styles.radioLabel}>{lang["SignUp"]["alreadyhaveacc"]}  <Text onPress={() => navigation.navigate("SignIn")} style={{ color: '#003912' }}>{lang["SignUp"]["SignIn"]}</Text></Text>
 
           <Button disabled={disableButtons} style={[styles.button, { marginBottom: 20, backgroundColor: '#003912' }]} onPress={handlePin}>
             <Text style={[styles.buttonText]}>{lang["SignUp"]["SignUp"]}</Text>

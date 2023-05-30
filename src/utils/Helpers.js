@@ -1,6 +1,6 @@
 
 let icons = [
-    "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356391/Carpenter_e0n91b.png",
+    "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1685450581/carpenterman_lpbudg.png",
     "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356392/Mechanic_nxfpf1.png",
     "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356392/Electrician_t6jugz.png",
     "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356393/Porter_khqttt.png",
@@ -26,7 +26,7 @@ let icons = [
     "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356394/Server_k1iq5t.png",
     "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356394/Solder_q08x0v.png",
     "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356390/Cleaner_bnwszw.png",
-    "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356392/FruitPicker_qjlcds.png",
+    "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1685449921/Screenshot_2023-05-30_173136_xf7slg.png",
     "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684356393/other_jwzeut.png",
 ]
 

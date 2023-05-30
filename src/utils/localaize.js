@@ -40,10 +40,10 @@ const en = {
         "contact": 'Contact no',
         "Select Cities": 'Select Cities',
         "Select Profession": 'Select Profession',
-        "Selected": 'Selected',
+        "Selected": 'Profession Selected',
         "error": 'Please fill all information',
-        "ok": 'ok', 
-        "Dont have an account": "Don't have an account",
+        "ok": 'ok',
+        "alreadyhaveacc": "Already have an account ?",
         "SignIn": "SignIn",
         "failed": "Something went wrong !!",
         "updateinfo": "Update Info",
@@ -97,6 +97,7 @@ const en = {
         "contact": 'Contact',
         "message": 'Message',
         "work": 'See Work',
+        "close": 'Close',
     },
 
 
@@ -106,6 +107,7 @@ const en = {
         "Seebids": 'See bids',
         "noJobs": 'No Jobs Posted Yet !!',
         "error": 'Something went wrong !!',
+        "filtercity": 'Filter by city',
     },
     seekerJobs: {
         "profession": 'Profession',
@@ -164,10 +166,10 @@ const ar = {
         "contact": 'رقم الاتصال',
         "Select Cities": 'اختر المدن',
         "Select Profession": 'اختر المهنة',
-        "Selected": 'المختارة',
+        "Selected": "المهنة المختارة",
         "error": 'يرجى ملء جميع المعلومات',
-        "ok": "حسنا", 
-        "Dont have an account": "ليس لديك حساب",
+        "ok": "حسنا",
+        "alreadyhaveacc": "هل لديك حساب؟",
         "SignIn": "تسجيل الدخول",
         "failed": "حدث خطأ ما !!",
         "updateinfo": "تحديث المعلومات",
@@ -188,10 +190,10 @@ const ar = {
     },
     professions: [
         "نجار", "ميكانيكي", "كهربائي",
-        "حمال", "رسام", "سائق", "سباك",
+        "حمال", "صباغ", "سائق", "سباك",
         "طباخ", "باني", "منسق", "أمن", "بناء",
         "توصيل", "دي جي", "صيانة", "تطوير تطبيقات", "محرك", "تطوير الويب", "سكرتير",
-        "جص", "خياط", "صانع ساندويتش", "مصلح",
+        "جباص", "خياط", "صانع ساندويتش", "مصلح",
         "خادم", "لحام", "منظف", "منتقي الفاكهة", "آخر",
 
     ],
@@ -214,6 +216,7 @@ const ar = {
         "Select Profession": 'اختر المهنة',
         "Post": 'بريد',
         "error": 'يرجى ملء جميع المعلومات',
+
     },
     posterJobs: {
         "profession": 'مهنة',
@@ -221,6 +224,7 @@ const ar = {
         "Seebids": 'انظر العطاءات',
         "noJobs": 'لم يتم نشر أي وظائف بعد !!',
         "error": 'لا توجد وظائف متاحة !!',
+        "filtercity": 'مدينة التصفية',
     },
     seekerJobs: {
         "profession": 'مهنة',
@@ -243,6 +247,7 @@ const ar = {
         "contact": 'اتصل',
         "message": 'رسالة',
         "work": 'عمل',
+        "close": 'قريب',
 
     },
 
