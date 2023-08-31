@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 
 import { useNavigation } from '@react-navigation/native';
 import { MyContext } from '../Store/Global'
-import { cities } from '../utils/Helpers';
+import { cities, country } from '../utils/Helpers';
 // let user = { "city": "Casablanca", "experience": "9", "id": "646bace8ab255de95a91f27b", "imageUrl": "https://res.cloudinary.com/dw6ee3vuu/image/upload/v1684778186/v6pisojfxghkq2iz32ib.jpg", "name": "Omair", "profession": "Artist", "type": "employee" }
 
 
@@ -156,7 +156,7 @@ const Editprofile = () => {
                                 </TouchableOpacity>}
                             >
                                 <ScrollView >
-                                    {cities.map((option, index) => (
+                                    {country[user.country]?.map((option, index) => (
                                         <Menu.Item
                                             style={styles.buttonText}
                                             key={index}

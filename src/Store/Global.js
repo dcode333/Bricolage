@@ -7,8 +7,10 @@ export const Global = ({ children }) => {
     // initialize states
     const apiKey = '3b212096897849988c0c863128175f2f'; // Replace with your actual API key
     const endpoint = 'https://api.cognitive.microsofttranslator.com/'; // Replace with the actual endpoint URL
-    const baseurl = "https://smiling-nightgown-fawn.cyclic.app"
-    // http://192.138.1.40:8000
+    const baseurl = "https://umair-nightgown-fawn.cyclic.app"
+    // http://192.168.100.19:5000
+    // https://smiling-nightgown-fawn.cyclic.app
+    //umair-nightgown-fawn
     const [token, setToken] = useState(null);
     const [user, SetUser] = useState(null);
     const [jobRefetcher, setJobRefetcher] = useState(false); //used to refetch jobs after posting a new job

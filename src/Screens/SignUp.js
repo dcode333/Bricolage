@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 
 import { useNavigation } from '@react-navigation/native';
 import { MyContext } from '../Store/Global'
-import { cities } from '../utils/Helpers';
+import { cities, country } from '../utils/Helpers';
 import ConfirmationModal from './Confirmaton';
 
 
@@ -25,7 +25,9 @@ const RegisterScreen = () => {
   const [contact, setContact] = useState('');
   const [visible, setVisible] = useState(false);
   const [visibleProf, setVisibleProf] = useState(false);
+  const [visiblecountry, setVisibleCountry] = useState(false);
   const [city, setcity] = useState('');
+  const [selectedCountry, setSelectedCcountry] = useState('');
   const [type, settype] = useState('employee');
   const [profession, setProfession] = useState('');
   const [experience, setExperience] = useState('');
@@ -80,9 +82,15 @@ const RegisterScreen = () => {
     else setDisableButtons(false)
   };
 
-  const handleOptionSelect = (option) => {
+  const handleCitySelect = (option) => {
     setcity(option);
     setVisible(false);
+  }
+
+  const handleCountrySelect = (option) => {
+    setSelectedCcountry(option);
+    setcity('');
+    setVisibleCountry(false);
   }
 
   const handleProfSelect = (index) => {
@@ -105,6 +113,7 @@ const RegisterScreen = () => {
         name,
         contact,
         city,
+        country: selectedCountry,
         profession,
         experience,
         imageUrl,
@@ -113,7 +122,7 @@ const RegisterScreen = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        
         if (data?.success === true) {
           updateUser(data?.user)
           updateToken(data?.token)
@@ -129,7 +138,7 @@ const RegisterScreen = () => {
 
   const handlePin = () => {
     if (disableButtons) return;
-    if (type === "employer" && (!name || !email || !password || !contact || !city) || type === "employee" && (!name || !email || !password || !contact || !city || !profession || !experience)) {
+    if (type === "employer" && (!name || !email || !password || !contact || !city || !selectedCountry) || type === "employee" && (!name || !email || !password || !contact || !city || !selectedCountry || !profession || !experience)) {
       Alert.alert(
         'Error',
         lang["SignUp"]["error"],
@@ -206,6 +215,25 @@ const RegisterScreen = () => {
             <View>
               <Menu
                 style={styles.menuStyles}
+                visible={visiblecountry}
+                onDismiss={() => setVisibleCountry(false)}
+                anchor={<TouchableOpacity style={styles.input} onPress={() => setVisibleCountry(true)}>
+                  <Text style={styles.buttonText} >{selectedCountry === '' ? lang["SignUp"]["Select Country"] : selectedCountry}</Text>
+                </TouchableOpacity>}
+              >
+                <ScrollView >
+                  {["Morocco", "Egypt", "UAE", "Qatar", "Algeria"].map((option, index) => (
+                    <Menu.Item
+                      style={styles.buttonText}
+                      key={index}
+                      title={option}
+                      onPress={() => { handleCountrySelect(option) }}
+                    />
+                  ))}
+                </ScrollView>
+              </Menu>
+              <Menu
+                style={styles.menuStyles}
                 visible={visible}
                 onDismiss={() => setVisible(false)}
                 anchor={<TouchableOpacity style={styles.input} onPress={() => setVisible(true)}>
@@ -214,12 +242,12 @@ const RegisterScreen = () => {
               >
                 <ScrollView >
 
-                  {cities.map((option, index) => (
+                  {country[selectedCountry]?.map((option, index) => (
                     <Menu.Item
                       style={styles.buttonText}
                       key={index}
                       title={option}
-                      onPress={() => handleOptionSelect(option)}
+                      onPress={() => handleCitySelect(option)}
                     />
                   ))}
                 </ScrollView>
@@ -314,7 +342,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     color: '#003912',
-    marginBottom: 10,
+    marginBottom: 5,
     fontFamily: 'Poppins-Bold',
     alignSelf: 'center',
   },
@@ -368,11 +396,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
   },
   radioContainer: {
-    marginBottom: 20,
+    marginBottom: 15,
   },
   radioLabel: {
     color: '#fff',
-    marginBottom: 10,
+    marginBottom: 5,
     fontFamily: 'Poppins-Medium',
   },
   radioGroup: {
@@ -407,7 +435,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     alignItems: 'center',
-    marginTop: 15,
+    marginTop: 5,
     fontFamily: 'Poppins-Medium',
   },
   buttonText: {

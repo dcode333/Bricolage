@@ -4,11 +4,11 @@ import { Button, Menu, PaperProvider } from 'react-native-paper';
 import { MyContext } from '../../Store/Global'
 import JobCard from './Components/JobCard';
 import { useRoute } from '@react-navigation/native';
-import { cities } from '../../utils/Helpers'
+import { cities, country } from '../../utils/Helpers'
 
 
 const JobList = () => {
-    const { lang, baseurl } = useContext(MyContext);
+    const { lang, baseurl, user } = useContext(MyContext);
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [visible, setVisible] = useState(false);
@@ -17,7 +17,7 @@ const JobList = () => {
     const { profession } = route.params || {};
 
     useEffect(() => {
-        fetch(`${baseurl}/api/jobs/getjobs/${profession}`)
+        fetch(`${baseurl}/api/jobs/getjobs/${user.country}/${profession}`)
             .then(response => response.json())
             .then(data => {
                 setData(data?.data)
@@ -57,7 +57,7 @@ const JobList = () => {
                         </Button>}
                     >
                         <ScrollView >
-                            {cities.map((option, index) => (
+                            {country[user.country]?.map((option, index) => (
                                 <Menu.Item
                                     style={styles.buttonText}
                                     key={index}

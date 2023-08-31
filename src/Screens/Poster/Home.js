@@ -18,9 +18,8 @@ const PostJobForm = () => {
   const [disabled, setDisabled] = useState(false)
 
   const navigation = useNavigation();
-
-
   const { lang, user, apiKey, baseurl, endpoint, jobRefetcher, setJobRefetcher } = useContext(MyContext);
+// console.log("user", user)
   const professions = [
     { label: lang["professions"][0], value: "Carpenter" },
     { label: lang["professions"][1], value: "Mechanic" },
@@ -73,7 +72,6 @@ const PostJobForm = () => {
     }
   }
 
-
   const handlePostJob = async () => {
     if (jobTitle == '' || jobDescription == '' || jobBudget == '' || selectedProfession == '') {
       Alert.alert(
@@ -95,7 +93,8 @@ const PostJobForm = () => {
         description: { en: jobDescription, ar: translatedDescription.text },
         budget: jobBudget,
         posterId: user.id,
-        hiring: { en: selectedProfession, ar: translateProfession.text }
+        hiring: { en: selectedProfession, ar: translateProfession.text },
+        country: user.country,
       }
 
       fetch(`${baseurl}/api/jobs/postjob`, {
